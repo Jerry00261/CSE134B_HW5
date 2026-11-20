@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form no JS </title>
+    <Link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <svg viewBox="0 0 32 32" width="32" height="32" fill="#1A1A1A" role="img"
+                                aria-labelledby="homeTitle">
+                                <title id="homeTitle">Home</title>
+                                <polygon points="16, 3 2, 15 30, 15" stroke="#1A1A1A" stroke-width="1"/>
+                                <rect x="5" y="14" width="22" height="15"/>
+                                <rect x="12" y="19" width="8" height="10" fill="white" stroke="#1A1A1A" opacity="0.9"/>
+                                <rect x="8" y="17" width="3" height="3" fill="white"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="experience.html">Experience</a>
+                </li>
+                <li>
+                    <a href="projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="hackathons.html">Hackathons</a>
+                </li>
+                <li>
+                    <a href="current-resume.html">Resume</a>
+                </li>
+                <li>
+                    <a href="form-no-js.html" aria-current="page">Form</a>
+                </li>
+                <li>
+                    <a href="form-with-js.html">JS Form</a>
+                </li>
+            </ul>
+        </nav>   
+    </header>
+
+    <form action="https://httpbin.org/post" method="post">
+
+        <fieldset>
+            <legend>Contact</legend>
+            <ul>
+                <li>All fields required</li>
+                <li>Email must have a valid address</li>
+                <li>Invalid fields have a red border, valid have green</li>
+            </ul>
+            <p>
+                <label for="firstName">First Name (1 character min.)</label>
+                <input type="text" id="firstName" name="firstName" autocomplete="name" minlength="1" maxlength="100" required>
+            </p>
+
+            <p>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+            </p>
+
+            <p>
+                <label for="comments">Comments (10 characters min.)</label>
+                <textarea id="comments" name="comments" minlength="10" maxlength="1000" required></textarea>
+            </p>
+            
+            <input type="hidden" value="true" name="possible_bot">
+            <button type="submit">Submit</button>
+
+        </fieldset>
+
+    </form>
+    
+</body>
+</html>
+
+<!-- CHANGE ALL FOOTER FORMS APPROPIATELT, E.G. LABEL AND INPUT TAGS PLACEMENT SAME AS THIS FILES ONE (NOT NESTED)-->
+
+
+
+ 
