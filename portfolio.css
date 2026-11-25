@@ -347,6 +347,39 @@ body > form button {
 
 /* ---------------------------------------------- */
 
+about-me-facts {
+    display: block;
+}
+
+about-me-facts p{
+    display: block;
+    margin-bottom: var(--margin-none);
+}
+
+about-me-facts button {
+    margin-bottom: var(--margin-none);
+    padding: 0.75em;
+}
+
+about-me-facts .fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+    
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fadeIn {
+        animation: none;
+    }
+}
 
 @media (prefers-reduced-motion: no-preference) {
     @view-transition {
