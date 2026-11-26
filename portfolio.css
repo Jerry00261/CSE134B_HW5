@@ -19,7 +19,10 @@
     --input-text: #f4f6f9;           
     --valid: #3ecf6e;                
     --invalid: #ff6b6b;              
-    --error: #ff8080;                
+    --error: #ff8080;       
+    
+    --facts-background: var(--background);
+    --facts-text: var(--text);
 }
 
 :root[data-theme="light"] {
@@ -349,6 +352,10 @@ body > form button {
 
 about-me-facts {
     display: block;
+    background-color: var(--facts-background, #15233a);
+    color: var(--facts-text, #f4f6f9);
+    padding: 1em;
+    border-radius: var(--border-radius);
 }
 
 about-me-facts p{
@@ -376,7 +383,7 @@ about-me-facts .fadeIn {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .fadeIn {
+    about-me-facts .fadeIn {
         animation: none;
     }
 }

@@ -24,7 +24,31 @@ class AboutMeFacts extends HTMLElement {
     connectedCallback() {
 
         async function loadTrivia() {
-            const response = await fetch('');
+            triviaStatus.textContent = 'Loading trivia...';
+            triviaButton.disabled = true;
+
+            try {
+                const response = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random');
+
+                if(!response.ok) {
+                    throw new Error('Unable to retrieve trivia.');
+                }
+
+                const data = await response.json();
+
+                if(!data || typeof data.text !== 'string' || data.text.trim() === '') {
+                    throw new Error('Invalid trivia data.');
+                }
+
+                triviaDisplay.textContent = data.text;
+                triviaStatus.textContent = 'Trivia Successfully Loaded!';
+            }
+            catch (error) {
+                triviaStatus.textContent = 'Unable to load trivia. Please try again';
+            }
+            finally {
+                triviaButton.disabled = false;
+            }
         }
 
         function updateDisplay() {
@@ -42,13 +66,13 @@ class AboutMeFacts extends HTMLElement {
 
         let currentIndex = 0;
 
+        const triviaHeading = document.createElement('h2');
         const heading2 = document.createElement('h2');
         if(this.hasAttribute('compact')) {
             heading2.hidden = true;
-            triviaHeading = true;
+            triviaHeading.hidden = true;
         }
 
-        const triviaHeading = document.createElement('h2');
         const factDisplay = document.createElement('p');
         const button = document.createElement('button');
         const previousButton = document.createElement('button');
@@ -78,6 +102,10 @@ class AboutMeFacts extends HTMLElement {
 
         this.append(heading2, factDisplay, previousButton, randomButton, button, status);
         this.append(triviaHeading, triviaDisplay, triviaButton, triviaStatus);
+
+        triviaButton.addEventListener('click', () => {
+            loadTrivia();
+        }); 
 
         factDisplay.addEventListener('animationend', () => {
             factDisplay.classList.remove('fadeIn');
@@ -116,6 +144,24 @@ customElements.define('about-me-facts', AboutMeFacts);
 const compactButton = document.querySelector('#viewChange');
 const component = document.querySelector('about-me-facts');
 
+try {
+    const savedPreference = localStorage.getItem('facts-compact');
+    if(savedPreference === 'true') {
+        component.setAttribute('compact', '');
+    }
+    else if(savedPreference === 'false') {
+        component.removeAttribute('compact');
+    }
+}
+catch (error) {
+    console.warn('Unable to retrieve saved preferences.');
+}
 compactButton.addEventListener('click', () => {
     component.toggleAttribute('compact');
+    try {
+        localStorage.setItem('facts-compact', component.hasAttribute('compact'));
+    }
+    catch (error) {
+        console.warn('Unable to save preference.');
+    }
 });
