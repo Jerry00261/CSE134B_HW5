@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Barillas Personal Portfolio</title>
+
+    <link rel="stylesheet" href="portfolio.css"> 
+    <script src="theme.js"></script>
+    <script src="about-me-facts.js" defer></script>
+    
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" aria-current="page">
+                        <svg viewBox="0 0 32 32" width="32" height="32" fill="#1A1A1A" role="img"
+                                aria-labelledby="homeTitle">
+                                <title id="homeTitle">Home</title>
+                                <polygon points="16, 3 2, 15 30, 15" stroke="#1A1A1A" stroke-width="1"/>
+                                <rect x="5" y="14" width="22" height="15"/>
+                                <rect x="12" y="19" width="8" height="10" fill="white" stroke="#1A1A1A" opacity="0.9"/>
+                                <rect x="8" y="17" width="3" height="3" fill="white"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="experience.html">Experience</a>
+                </li>
+                <li>
+                    <a href="projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="hackathons.html">Hackathons</a>
+                </li>
+                <li>
+                    <a href="current-resume.html">Resume</a>
+                </li>
+                <li>
+                    <a href="form-no-js.html">Form</a>
+                </li>
+                <li>
+                    <a href="form-with-js.html">JS Form</a>
+                </li>
+                <li id="theme-control" hidden>
+                    <button type="button" id="theme-toggle">Switch to light theme</button>
+                </li>
+            </ul>
+        </nav>        
+    </header>
+    <main>
+        <h1>Jerry's Portfolio</h1>
+        <career-title>
+            <p class="career-title">Software Engineer</p>
+        </career-title>
+       <img src="sources/headshot.png" alt="Headshot of Jerry Barillas, a man with curly dark hair and a goatee" width="330" height="407">
+
+        <section>
+            <h2>About me</h2>
+            <p>Hello! My name is Jerry Barillas and I am an undergraduate here at the University
+                of California, San Diego majoring in <b>Cognitive Science</b> (specialization in Design & Interaction)
+                and I currently have a minor in <b>Computer Science</b>. <strong>I am actively looking for opportunities</strong> to sharpen
+                my skills in <b>full stack development</b>, either through projects, classes, or internships. In my free time 
+                I like to listen to music, go out to eat with friends, and if time permits it, play video games.
+            </p>
+
+            <p><a href="hobbies.html">Hobbies</a></p>
+        </section>
+        
+        <section>
+            <h2>Background</h2>
+            <p>I am a 21 year old Hispanic born and raised in Los Angeles, California (specifically South Central, Los Angeles) with a passion for full stack
+                development. I have <em>always</em> been curious about technology since a kid and that curiosity combined with my love for video games pushed me towards
+                the field of software engineering. I enjoy helping others as well, so that technical work and idea of solving a problem required for 
+                full stack development is what feels the most rewarding in my work and is why I like to center my projects toward solving an inconvenience people
+                may have.
+            </p>
+
+            <p>
+                Website last updated: November 15, 2026
+            </p>
+        </section>
+        
+        <section>
+            <about-me-facts></about-me-facts>
+            <button type="button" id="viewChange" aria-pressed="false" hidden>
+            Toggle compact view
+            </button>
+
+            <noscript>
+                <p>Enable JavaScript to view personal facts and load random trivia.</p>
+            </noscript>
+        </section>
+    </main>
+
+    {% include "footer.njk" %}
+    
+</body>
+</html>

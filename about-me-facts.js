@@ -156,8 +156,13 @@ try {
 catch (error) {
     console.warn('Unable to retrieve saved preferences.');
 }
+
+compactButton.hidden = false;
+compactButton.setAttribute('aria-pressed', component.hasAttribute('compact'));
+
 compactButton.addEventListener('click', () => {
     component.toggleAttribute('compact');
+    compactButton.setAttribute('aria-pressed', component.hasAttribute('compact'));
     try {
         localStorage.setItem('facts-compact', component.hasAttribute('compact'));
     }
